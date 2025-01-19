@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #152f59;
+    color: #ffffff;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: #152f59;
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.sticky-header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.vote-options {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.option-container {
+    text-align: center;
+}
+
+.vote-button {
+    margin: 5px;
+    background: linear-gradient(to right, #007bff, #6a0dad);
+    border: none;
+    color: white;
+    transition: background 1.5s;
+}
+
+.vote-button:hover {
+    background: linear-gradient(to right, #6a0dad, #dc3545);
+}
+
+.vote-button.voted {
+    background: linear-gradient(to right, #6a0dad, #dc3545);
+}
+
+.about-button {
+    margin: 5px;
+    background: linear-gradient(to right, #007bff, #6a0dad);
+    border: none;
+    color: white;
+    transition: background 1.5s;
+}
+
+.about-button:hover {
+    background: linear-gradient(to right, #6a0dad, #32a852);
+}
+
+.chat-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.chat-box {
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #333;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.chat-input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-input input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}

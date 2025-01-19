@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote</title>
+    <link rel="stylesheet" href="vote.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sticky-header">
+            <h1>Vote</h1>
+            <div class="vote-options">
+                <div class="option-container">
+                    <button class="btn btn-primary vote-button" data-option="option1">Option 1</button>
+                    <a href="pdf/option1.pdf" target="_blank" class="btn btn-secondary about-button">About</a>
+                </div>
+                <div class="option-container">
+                    <button class="btn btn-primary vote-button" data-option="option2">Option 2</button>
+                    <a href="pdf/option2.pdf" target="_blank" class="btn btn-secondary about-button">About</a>
+                </div>
+                <div class="option-container">
+                    <button class="btn btn-primary vote-button" data-option="option3">Option 3</button>
+                    <a href="pdf/option3.pdf" target="_blank" class="btn btn-secondary about-button">About</a>
+                </div>
+            </div>
+        </div>
+        <div class="chat-container">
+            <div class="chat-box" id="chat-box">
+                <!-- Chat messages will be displayed here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Type a message...">
+                <button class="btn btn-primary" id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="vote.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>

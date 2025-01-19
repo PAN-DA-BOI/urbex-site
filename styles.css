@@ -21,15 +21,41 @@ body {
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
+    margin-top: calc(100vh - 100px); /* Push the box to the bottom */
+}
+
+.header-box {
+    padding: 20px;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.header-box h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #ffffff; /* Ensure the header text is white */
+}
+
+.custom-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .custom-button {
     background: linear-gradient(to right, #007bff, #6a0dad);
     border: none;
     color: white;
-    transition: background 0.5s;
+    transition: background 1.5s; /* Slower transition */
 }
 
 .custom-button:hover {
     background: linear-gradient(to right, #6a0dad, #dc3545);
+}
+
+p {
+    color: #ffffff; /* Make paragraph text white */
 }
