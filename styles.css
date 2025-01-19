@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    background-color: #152f59;
+}
+
+.background-container {
+    position: relative;
+    background-image: url('imgs/3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.content-container {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+}
+
+.custom-button {
+    background: linear-gradient(to right, #007bff, #6a0dad);
+    border: none;
+    color: white;
+    transition: background 0.5s;
+}
+
+.custom-button:hover {
+    background: linear-gradient(to right, #6a0dad, #dc3545);
+}
