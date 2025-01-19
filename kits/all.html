@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Kits</title>
+    <link rel="stylesheet" href="../bootstrap.css">
+	<link rel="stylesheet" href="kits.css">
+</head>
+<body>
+<a href="index.html" class="btn btn-secondary back-button">Back to Home</a>
+
+    <div class="container">
+        <div id="med">
+            <h1>Medkit</h1>
+				<ul>
+				  <li>bandaids (size 5/8", 3 count)</li>
+				  <li>bandaids (size 3/4", 6 count)</li>
+				  <li>bandaids (size 2", 2 count)</li>
+				  <li>white petrolatum (4 count)</li>
+				  <li>alcohol wipes (5 count)</li>
+				  <li>hand sanitizer</li>
+				  <li>Iodine</li>
+				</ul>
+        </div>
+        <div id="repel">
+            <h1>Repel Kit</h1>
+				<ul>
+				  <li>Climbing harness</li>
+				  <li>Static rope</li>
+				  <li>Descender (figure 8 or belay device)</li>
+				  <li>Carabiners</li>
+				  <li>Helmet</li>
+				  <li>Gloves</li>
+				</ul>
+        </div>
+        <div id="sleep">
+            <h1>Overnight Kit</h1>
+				<ul>
+				  <li>Sleeping bag</li>
+				  <li>Sleeping pad</li>
+				  <li>Water</li>
+				  <li>Food (energy bars, trail mix, dehydrated meals)</li>
+				  <li>Portable stove and fuel</li>
+				  <li>Layered clothing</li>
+				  <li>First aid kit</li>
+				  <li>Multi-tool</li>
+				  <li>Power bank</li>
+				  <li>Camera</li>
+				  <li>Two-way radio</li>
+				</ul>
+        </div>
+        <div id="glass">
+            <h1>Glass Kit</h1>
+				<ul>
+				  <li>Glass breaker or spring-loaded punch</li>
+				  <li>Tarp or heavy-duty plastic sheet</li>
+				</ul>
+        </div>
+        <div id="photo">
+            <h1>photography</h1>
+				<ul>
+				  <li>Camera</li>
+				  <li>Extra batteries</li>
+				  <li>Memory cards</li>
+				  <li>Camera bag</li>
+				  <li>external lighting</li>
+				  <li>tripod</li>
+				</ul>
+        </div>
+        <div id="card6">
+            <h1>Card 6</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const element = document.getElementById(hash);
+                if (element) {
+                    element.classList.add('highlight');
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

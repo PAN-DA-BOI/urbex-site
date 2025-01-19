@@ -6,6 +6,23 @@ body {
     color: #ffffff;
 }
 
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(to right, #6a0dad, #32a852);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    z-index: 1000;
+    transition: background 0.5s;
+}
+
+.back-button:hover {
+    background: linear-gradient(to right, #32a852, #dc3545);
+}
+
 .sticky-header {
     position: sticky;
     top: 0;
@@ -58,6 +75,11 @@ body {
     background: linear-gradient(to right, #6a0dad, #32a852);
 }
 
+.countdown-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
 .chat-container {
     margin-top: 20px;
     padding: 20px;
@@ -88,4 +110,9 @@ body {
     border-radius: 5px;
     background-color: #333;
     color: #fff;
+}
+
+.winner-container {
+    text-align: center;
+    margin-top: 20px;
 }

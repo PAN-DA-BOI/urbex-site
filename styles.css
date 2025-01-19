@@ -49,11 +49,19 @@ body {
     background: linear-gradient(to right, #007bff, #6a0dad);
     border: none;
     color: white;
-    transition: background 1.5s; /* Slower transition */
+    transition: background 1s; /* Slower transition */
+    margin: 10px; /* Add margin to space out the buttons */
+    width: 100%;
+    padding: 20px;
+    font-size: 1.5em;
 }
 
 .custom-button:hover {
     background: linear-gradient(to right, #6a0dad, #dc3545);
+}
+
+.button-row {
+    margin-top: 20px;
 }
 
 p {

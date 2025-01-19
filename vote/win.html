@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winner</title>
+    <link rel="stylesheet" href="vote.css">
+    <link rel="stylesheet" href="../bootstrap.css">
+</head>
+<body>
+    <a href="../index.html" class="btn btn-secondary back-button">Back to Home</a>
+    <div class="container">
+        <div class="sticky-header">
+            <h1>Winner</h1>
+        </div>
+        <div class="winner-container">
+            <embed id="winner-pdf" src="" type="application/pdf" width="100%" height="600px">
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const winner = urlParams.get('winner');
+            if (winner) {
+                document.getElementById('winner-pdf').src = `pdf/${winner}.pdf`;
+            }
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
