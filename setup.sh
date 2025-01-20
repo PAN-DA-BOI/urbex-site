@@ -33,6 +33,49 @@ sudo cp -r * /var/www/html/
 sudo chown -R www-data:www-data /var/www/html
 sudo chmod -R 755 /var/www/html
 
+# Create a password file for basic authentication
+sudo htpasswd -c /etc/apache2/.htpasswd PAN-DA-BOI
+sudo htpasswd /etc/apache2/.htpasswd GarfGal
+sudo htpasswd /etc/apache2/.htpasswd InTheWoods
+
+# Configure Apache for basic authentication
+sudo bash -c "cat > /etc/apache2/sites-available/000-default.conf" <<EOF
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+
+    <Directory /var/www/html>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    <Directory /var/www/html/map>
+        AuthType Basic
+        AuthName "Restricted Content"
+        AuthUserFile /etc/apache2/.htpasswd
+        Require valid-user
+    </Directory>
+
+    <Directory /var/www/html/vote>
+        AuthType Basic
+        AuthName "Restricted Content"
+        AuthUserFile /etc/apache2/.htpasswd
+        Require valid-user
+    </Directory>
+
+    <Directory /var/www/html/kits>
+        AuthType Basic
+        AuthName "Restricted Content"
+        AuthUserFile /etc/apache2/.htpasswd
+        Require valid-user
+    </Directory>
+
+    ErrorLog \${APACHE_LOG_DIR}/error.log
+    CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+EOF
+
 # Restart Apache to apply changes
 sudo systemctl restart apache2
 

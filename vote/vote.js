@@ -54,7 +54,20 @@ document.addEventListener('DOMContentLoaded', function() {
             button.classList.add('voted');
             votedOption = option;
 
-            // Here you can add code to send the vote to the server or update the UI
+            // Send the vote to the server
+            fetch('/vote', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ option })
+            }).then(response => response.json())
+                .then(data => {
+                    console.log('Vote recorded:', data);
+                })
+                .catch(error => {
+                    console.error('Error recording vote:', error);
+                });
         });
     });
 

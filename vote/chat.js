@@ -2,16 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatBox = document.getElementById('chat-box');
     const chatInput = document.getElementById('chat-input');
     const sendButton = document.getElementById('send-button');
-    const socket = new WebSocket('ws://localhost:8080'); // Change to your server URL
-
-    socket.addEventListener('open', function() {
-        console.log('Connected to the server');
-    });
-
-    socket.addEventListener('message', function(event) {
-        const message = JSON.parse(event.data);
-        displayMessage(message);
-    });
+    const socket = io();
 
     sendButton.addEventListener('click', function() {
         const message = chatInput.value;
@@ -28,13 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function sendMessage(message) {
-        const messageData = {
-            user: 'User', // Replace with actual user info
-            content: message,
-            timestamp: new Date().toISOString()
-        };
-        socket.send(JSON.stringify(messageData));
+        socket.emit('chat message', message);
     }
+
+    socket.on('chat message', function(message) {
+        displayMessage(message);
+    });
 
     function displayMessage(message) {
         const chatMessage = document.createElement('div');
