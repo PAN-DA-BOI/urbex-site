@@ -47,7 +47,9 @@ var locations = [
     { lat: 40.742931, lng: -111.929172, notes: "Note: abandoned food world building", name: "Food World", folder: 'food-world' },
     { lat: 40.753712, lng: -111.900832, notes: "Note: multiple buildings in area", name: "Construction", folder: 'construction' },
     { lat: 41.225611, lng: -111.991836, notes: "Note: abandoned hospital", name: "Hospital", folder: 'hospital' },
-    { lat: 40.901375, lng: -111.885932, notes: "Note: abandoned house", name: "House", folder: 'house' }
+    { lat: 40.901375, lng: -111.885932, notes: "Note: Anson Call house", name: "Call House", folder: 'house' }, 	
+	{ lat: 40.752839, lng: -111.902072, notes: "Note: abandoned pickle building", name: "utah pickle co", folder: 'pickle' },
+	{ lat: 40.753135, lng: -111.902191, notes: "Note: Warehouse", name: "Warehouse", folder: 'Warehouse' }
 ];
 
 // Add markers to the map
