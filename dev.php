@@ -25,13 +25,15 @@ function addLocation($name, $lat, $lng, $notes, $folder) {
 }
 
 // Function to add a new user
-function addUser($username, $password, $permissions) {
+function addUser($username, $password, $color, $profilePicture, $permissions) {
     $passwordHash = password_hash($password, PASSWORD_BCRYPT);
     $usersFile = 'users.json';
     $users = json_decode(file_get_contents($usersFile), true);
     $users[] = [
         'username' => $username,
         'password' => $passwordHash,
+        'color' => $color,
+        'profilePicture' => $profilePicture,
         'permissions' => $permissions
     ];
     file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
@@ -78,12 +80,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (isset($_POST['add_user'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $color = $_POST['color'];
+        $profilePicture = $_FILES['profilePicture']['name'];
         $permissions = [
             'map' => isset($_POST['map']) ? true : false,
             'kits' => isset($_POST['kits']) ? true : false,
             'vote' => isset($_POST['vote']) ? true : false
         ];
-        addUser($username, $password, $permissions);
+        addUser($username, $password, $color, $profilePicture, $permissions);
         header('Location: dev.php');
         exit();
     } elseif (isset($_POST['update_permissions'])) {
@@ -141,11 +145,15 @@ $users = json_decode(file_get_contents($usersFile), true);
     </form>
 
     <h2>Add User</h2>
-    <form method="post" action="dev.php" class="dashboard-form">
+    <form method="post" action="dev.php" class="dashboard-form" enctype="multipart/form-data">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br>
+        <label for="color">Color:</label>
+        <input type="color" id="color" name="color" required><br>
+        <label for="profilePicture">Profile Picture:</label>
+        <input type="file" id="profilePicture" name="profilePicture" required><br>
         <label for="map">Map Access:</label>
         <input type="checkbox" id="map" name="map"><br>
         <label for="kits">Kits Access:</label>

@@ -8,24 +8,20 @@
 </head>
 <body>
     <h1>User Settings</h1>
-    <form id="settings-form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+    <form id="settings-form" enctype="multipart/form-data">
+        <label for="color">Choose Color:</label>
+        <input type="color" id="color" name="color" required><br>
+        <label for="profilePicture">Upload Profile Picture:</label>
+        <input type="file" id="profilePicture" name="profilePicture" required><br>
         <button type="submit">Update</button>
     </form>
     <script>
         document.getElementById('settings-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            fetch('/settings', {
+            const formData = new FormData(this);
+            fetch('update_settings.php', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
+                body: formData
             }).then(response => response.json())
                 .then(data => {
                     console.log('Settings updated:', data);
