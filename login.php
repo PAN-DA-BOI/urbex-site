@@ -8,23 +8,12 @@ function authenticateUser($username, $password) {
     foreach ($users as $user) {
         if ($user['username'] === $username && password_verify($password, $user['password'])) {
             $_SESSION['user'] = $user['username'];
+            $_SESSION['color'] = $user['color'];
+            $_SESSION['profilePicture'] = $user['profilePicture'];
             return true;
         }
     }
     return false;
-}
-
-// Function to register user
-function registerUser($username, $password) {
-    $passwordHash = password_hash($password, PASSWORD_BCRYPT);
-    $usersFile = 'users.json';
-    $users = json_decode(file_get_contents($usersFile), true);
-    $users[] = [
-        'username' => $username,
-        'password' => $passwordHash,
-        'permissions' => ['map' => false, 'kits' => false, 'vote' => false]
-    ];
-    file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
 }
 
 // Handle form submissions
@@ -38,12 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $error = 'Invalid username or password';
         }
-    } elseif (isset($_POST['register'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        registerUser($username, $password);
-        header('Location: login.php');
-        exit();
     }
 }
 ?>
@@ -81,13 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         button:hover {
             opacity: 0.8;
-        }
-
-        /* Extra styles for the cancel button */
-        .cancelbtn {
-            width: auto;
-            padding: 10px 18px;
-            background-color: #f44336;
         }
 
         /* Center the image and position the close button */
@@ -183,7 +159,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <h2>Login Form</h2>
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</button>
 
 <div id="id01" class="modal">
     <form class="modal-content animate" method="post" action="login.php">
@@ -212,41 +187,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </div>
 
-<div id="id02" class="modal">
-    <form class="modal-content animate" method="post" action="login.php">
-        <div class="imgcontainer">
-            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="imgs/avatar.png" alt="Avatar" class="avatar">
-        </div>
-
-        <div class="container">
-            <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
-
-            <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-
-            <button type="submit" name="register">Register</button>
-        </div>
-
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-        </div>
-    </form>
-</div>
-
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
-var modal2 = document.getElementById('id02');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
-    }
-    if (event.target == modal2) {
-        modal2.style.display = "none";
     }
 }
 </script>
