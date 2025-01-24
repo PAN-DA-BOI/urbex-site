@@ -34,9 +34,10 @@ sudo chown -R www-data:www-data /var/www/html
 sudo chmod -R 755 /var/www/html
 
 # Create a password file for basic authentication
-sudo htpasswd -c /etc/apache2/.htpasswd PAN-DA-BOI
-sudo htpasswd /etc/apache2/.htpasswd GarfGal
+sudo htpasswd -c /etc/apache2/.htpasswd pandaboi
+sudo htpasswd /etc/apache2/.htpasswd kitty
 sudo htpasswd /etc/apache2/.htpasswd InTheWoods
+sudo htpasswd /etc/apache2/.htpasswd terraferma
 
 # Configure Apache for basic authentication
 sudo bash -c "cat > /etc/apache2/sites-available/000-default.conf" <<EOF
