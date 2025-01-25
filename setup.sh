@@ -38,6 +38,7 @@ sudo htpasswd -c /etc/apache2/.htpasswd pandaboi
 sudo htpasswd /etc/apache2/.htpasswd kitty
 sudo htpasswd /etc/apache2/.htpasswd InTheWoods
 sudo htpasswd /etc/apache2/.htpasswd terraferma
+sudo htpasswd /etc/apache2/.htpasswd user
 
 # Configure Apache for basic authentication
 sudo bash -c "cat > /etc/apache2/sites-available/000-default.conf" <<EOF
