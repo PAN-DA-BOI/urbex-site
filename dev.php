@@ -25,15 +25,13 @@ function addLocation($name, $lat, $lng, $notes, $folder) {
 }
 
 // Function to add a new user
-function addUser($username, $password, $color, $profilePicture, $permissions) {
+function addUser($username, $password, $permissions) {
     $passwordHash = password_hash($password, PASSWORD_BCRYPT);
     $usersFile = 'users.json';
     $users = json_decode(file_get_contents($usersFile), true);
     $users[] = [
         'username' => $username,
         'password' => $passwordHash,
-        'color' => $color,
-        'profilePicture' => $profilePicture,
         'permissions' => $permissions
     ];
     file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
@@ -58,12 +56,10 @@ function addPdf($file) {
     move_uploaded_file($file['tmp_name'], $targetFile);
 }
 
-// Function to write a blog post
-function writeBlogPost($title, $content) {
-    $blogDir = 'blog/';
-    $fileName = strtolower(str_replace(' ', '_', $title)) . '.html';
-    $fileContent = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>$title</title>\n    <link rel=\"stylesheet\" href=\"../styles.css\">\n</head>\n<body>\n    <h1>$title</h1>\n    <div>$content</div>\n</body>\n</html>";
-    file_put_contents($blogDir . $fileName, $fileContent);
+// Function to update the text file
+function updateTextFile($content) {
+    $filePath = 'path/to/your/textfile.txt';
+    file_put_contents($filePath, $content);
 }
 
 // Handle form submissions
@@ -80,14 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (isset($_POST['add_user'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $color = $_POST['color'];
-        $profilePicture = $_FILES['profilePicture']['name'];
         $permissions = [
             'map' => isset($_POST['map']) ? true : false,
             'kits' => isset($_POST['kits']) ? true : false,
             'vote' => isset($_POST['vote']) ? true : false
         ];
-        addUser($username, $password, $color, $profilePicture, $permissions);
+        addUser($username, $password, $permissions);
         header('Location: dev.php');
         exit();
     } elseif (isset($_POST['update_permissions'])) {
@@ -104,10 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         addPdf($_FILES['pdf']);
         header('Location: dev.php');
         exit();
-    } elseif (isset($_POST['write_blog'])) {
-        $title = $_POST['title'];
+    } elseif (isset($_POST['update_text'])) {
         $content = $_POST['content'];
-        writeBlogPost($title, $content);
+        updateTextFile($content);
         header('Location: dev.php');
         exit();
     }
@@ -124,76 +117,94 @@ $users = json_decode(file_get_contents($usersFile), true);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="test.css">
 </head>
 <body>
-    <h1>Developer Dashboard</h1>
-
-    <h2>Add Location</h2>
-    <form method="post" action="dev.php" class="dashboard-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br>
-        <label for="lat">Latitude:</label>
-        <input type="text" id="lat" name="lat" required><br>
-        <label for="lng">Longitude:</label>
-        <input type="text" id="lng" name="lng" required><br>
-        <label for="notes">Notes:</label>
-        <input type="text" id="notes" name="notes" required><br>
-        <label for="folder">Folder:</label>
-        <input type="text" id="folder" name="folder" required><br>
-        <button type="submit" name="add_location" class="dashboard-button">Add Location</button>
-    </form>
-
-    <h2>Add User</h2>
-    <form method="post" action="dev.php" class="dashboard-form" enctype="multipart/form-data">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-        <label for="color">Color:</label>
-        <input type="color" id="color" name="color" required><br>
-        <label for="profilePicture">Profile Picture:</label>
-        <input type="file" id="profilePicture" name="profilePicture" required><br>
-        <label for="map">Map Access:</label>
-        <input type="checkbox" id="map" name="map"><br>
-        <label for="kits">Kits Access:</label>
-        <input type="checkbox" id="kits" name="kits"><br>
-        <label for="vote">Vote Access:</label>
-        <input type="checkbox" id="vote" name="vote"><br>
-        <button type="submit" name="add_user" class="dashboard-button">Add User</button>
-    </form>
-
-    <h2>Update User Permissions</h2>
-    <form method="post" action="dev.php" class="dashboard-form">
-        <label for="update_username">Username:</label>
-        <select id="update_username" name="username" required>
-            <?php foreach ($users as $user): ?>
-                <option value="<?php echo htmlspecialchars($user['username']); ?>"><?php echo htmlspecialchars($user['username']); ?></option>
-            <?php endforeach; ?>
-        </select><br>
-        <label for="update_map">Map Access:</label>
-        <input type="checkbox" id="update_map" name="map"><br>
-        <label for="update_kits">Kits Access:</label>
-        <input type="checkbox" id="update_kits" name="kits"><br>
-        <label for="update_vote">Vote Access:</label>
-        <input type="checkbox" id="update_vote" name="vote"><br>
-        <button type="submit" name="update_permissions" class="dashboard-button">Update Permissions</button>
-    </form>
-
-    <h2>Add PDF</h2>
-    <form method="post" action="dev.php" enctype="multipart/form-data" class="dashboard-form">
-        <label for="pdf">Choose PDF:</label>
-        <input type="file" id="pdf" name="pdf" required><br>
-        <button type="submit" name="add_pdf" class="dashboard-button">Add PDF</button>
-    </form>
-
-    <h2>Write Blog Post</h2>
-    <form method="post" action="dev.php" class="dashboard-form">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required><br>
-        <label for="content">Content:</label>
-        <textarea id="content" name="content" required></textarea><br>
-        <button type="submit" name="write_blog" class="dashboard-button">Write Blog Post</button>
-    </form>
+    <div class="header">
+        DEVELOPMENT
+    </div>
+    <div class="container">
+        <div class="top">
+            <div class="sect1">
+                <div class="box">
+                    <h1>CPU</h1>
+                    <p>CPU Temp: </p>
+                    <p>Usage: </p>
+                </div>
+                <div class="box">
+                    <h1>RAM</h1>
+                    <p>Usage: </p>
+                </div>
+                <div class="box">
+                    <h1>NETWORK</h1>
+                    <p>Network Info: </p>
+                </div>
+            </div>
+            <div class="sect2">
+                <div class="title-container">
+                    <h1>Vote</h1>
+                    <button class="deploy-button" onclick="document.getElementById('voteForm').submit()">Deploy</button>
+                </div>
+                <div class="box-container">
+                    <form id="voteForm" method="post" enctype="multipart/form-data">
+                        <div class="box">
+                            <p>Option 1</p>
+                            <input type="file" name="file1">
+                            <button type="submit" name="add_pdf">Remove</button>
+                        </div>
+                        <div class="box">
+                            <p>Option 2</p>
+                            <input type="file" name="file2">
+                            <button type="submit" name="add_pdf">Remove</button>
+                        </div>
+                        <div class="box">
+                            <p>Option 3</p>
+                            <input type="file" name="file3">
+                            <button type="submit" name="add_pdf">Remove</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="sect3">
+                <div class="grid-container">
+                    <div class="grid-header">USERNAME</div>
+                    <div class="grid-header">MAP</div>
+                    <div class="grid-header">KIT</div>
+                    <div class="grid-header">VOTE</div>
+                    <div class="grid-header">DEV</div>
+                    <div class="grid-header">ONLINE</div>
+                    <div class="grid-header">BAN</div>
+                    <?php foreach ($users as $user): ?>
+                        <div class="grid-item"><?php echo htmlspecialchars($user['username']); ?></div>
+                        <div class="grid-item"><label class="switch"><input type="checkbox" <?php echo $user['permissions']['map'] ? 'checked' : ''; ?> name="map[<?php echo htmlspecialchars($user['username']); ?>]"><span class="slider"></span></label></div>
+                        <div class="grid-item"><label class="switch"><input type="checkbox" <?php echo $user['permissions']['kits'] ? 'checked' : ''; ?> name="kits[<?php echo htmlspecialchars($user['username']); ?>]"><span class="slider"></span></label></div>
+                        <div class="grid-item"><label class="switch"><input type="checkbox" <?php echo $user['permissions']['vote'] ? 'checked' : ''; ?> name="vote[<?php echo htmlspecialchars($user['username']); ?>]"><span class="slider"></span></label></div>
+                        <div class="grid-item"><label class="switch"><input type="checkbox" name="dev[<?php echo htmlspecialchars($user['username']); ?>]"><span class="slider"></span></label></div>
+                        <div class="grid-item"><?php echo $user['online'] ? 'Online' : 'Offline'; ?></div>
+                        <div class="grid-item"><button type="submit" name="ban[<?php echo htmlspecialchars($user['username']); ?>]">Ban</button></div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="sect4">
+                <div class="top-container">
+                    <div class="upload-container">
+                        <label for="imageUpload" class="custom-upload-button">Upload Image</label>
+                        <input type="file" id="imageUpload" class="image-upload" style="display:none;" name="imageUpload">
+                    </div>
+                    <div class="deploy-container">
+                        <button class="deploy-button-sect4" onclick="document.getElementById('textForm').submit()">Deploy</button>
+                    </div>
+                </div>
+                <div class="text-edit-container">
+                    <form id="textForm" method="post">
+                        <textarea class="text-edit" name="content" placeholder="Enter text here..."></textarea>
+                        <button type="submit" name="update_text">Update Text</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
