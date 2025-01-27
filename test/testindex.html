@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URBEX</title>
+    <link rel="stylesheet" href="test-styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Desktop View -->
+        <div class="d-none d-md-block">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center">
+                    <h1 class="header-text">URBAN EXPLORATION</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 sidebar">
+                    <a href="kits/kits.html"><img src="imgs/icon/bag.png" alt="Kits" class="sidebar-icon"></a>
+                    <a href="vote/vote.html"><img src="imgs/icon/vote.png" alt="Vote" class="sidebar-icon"></a>
+                    <a href="map/map.html"><img src="imgs/icon/map.png" alt="Map" class="sidebar-icon"></a>
+                    <a href="settings.html"><img src="imgs/icon/settings.png" alt="Settings" class="sidebar-icon"></a>
+                </div>
+                <div class="col-md-10 content">
+                    <div class="row">
+                        <div class="col-md-6 text-box left">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div class="col-md-6 text-box right">
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile View -->
+        <div class="d-block d-md-none">
+            <div class="text-center">
+                <h1 class="header-text">URBEX</h1>
+            </div>
+            <div class="nav-bar">
+                <a href="kits/kits.html"><img src="imgs/icon/bag.png" alt="Kits" class="nav-icon"></a>
+                <a href="vote/vote.html"><img src="imgs/icon/vote.png" alt="Vote" class="nav-icon"></a>
+                <a href="map/map.html"><img src="imgs/icon/map.png" alt="Map" class="nav-icon"></a>
+                <a href="settings.html"><img src="imgs/icon/settings.png" alt="Settings" class="nav-icon"></a>
+            </div>
+            <div class="content">
+                <div class="text-box">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="text-box">
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Popup -->
+    <div id="loginPopup" class="modal">
+        <form class="modal-content animate" action="login.php" method="post">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('loginPopup').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="imgs/avatar.png" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button type="submit">Login</button>
+                <button type="button" onclick="continueWithoutAccount()">Continue Without An Account</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('loginPopup').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('loginPopup');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Show the login popup when the page loads
+        window.onload = function() {
+            modal.style.display = "block";
+        }
+
+        // Function to continue without an account
+        function continueWithoutAccount() {
+            // Set a session variable to indicate the user is continuing without an account
+            document.cookie = "guest=true; path=/";
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
