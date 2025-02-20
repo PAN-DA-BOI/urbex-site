@@ -87,3 +87,7 @@ p {
 .back-button:hover {
     background: linear-gradient(to right, #32a852, #dc3545);
 }
+.pdf {
+	width: 90%;
+	aspect-ratio: 4 / 3;
+}
