@@ -52,6 +52,17 @@ body {
     background-color: #32a852;
 }
 
+.btn-secondary {
+    background-color: #007bff;
+    border: none;
+    transition: background 1.5s;
+}
+
+.btn-secondary:hover {
+    background-color: #a83252;
+}
+
+
 h1 {
     color: #ffffff;
     margin-bottom: 20px;
