@@ -19,16 +19,6 @@ var files = [
     { path: 'food-world/image (9).jpg', folder: 'food-world' },
     { path: 'food-world/image (10).jpg', folder: 'food-world' },
     { path: 'food-world/image (11).jpg', folder: 'food-world' },
-    { path: 'theater/theater.html', folder: 'movie-theater' },
-    { path: 'theater/image (1).jpg', folder: 'movie-theater' },
-    { path: 'theater/image (2).jpg', folder: 'movie-theater' },
-    { path: 'theater/image (3).jpg', folder: 'movie-theater' },
-    { path: 'theater/image (4).jpg', folder: 'movie-theater' },
-    { path: 'theater/image (5).jpg', folder: 'movie-theater' },
-    { path: 'construction/construction.html', folder: 'construction' },
-    { path: 'construction/image (1).jpg', folder: 'construction' },
-    { path: 'hospital/hospital.html', folder: 'hospital' },
-    { path: 'house/house.html', folder: 'house' },
     // Add other files here
 ];
 
@@ -43,13 +33,13 @@ var folderFiles = files.reduce((acc, file) => {
 
 // Array of locations with predefined file lists
 var locations = [
-    { lat: 40.88712, lng: -111.8952, notes: "Note: Old Cinemark", name: "Movie Theater", folder: 'movie-theater' },
+    //{ lat: 40.88712, lng: -111.8952, notes: "Note: Old Cinemark", name: "Movie Theater", folder: 'movie-theater' },
     { lat: 40.742931, lng: -111.929172, notes: "Note: abandoned food world building", name: "Food World", folder: 'food-world' },
-    { lat: 40.753712, lng: -111.900832, notes: "Note: multiple buildings in area", name: "Construction", folder: 'construction' },
-    { lat: 41.225611, lng: -111.991836, notes: "Note: abandoned hospital", name: "Hospital", folder: 'hospital' },
-    { lat: 40.901375, lng: -111.885932, notes: "Note: Anson Call house", name: "Call House", folder: 'house' }, 	
-	{ lat: 40.752839, lng: -111.902072, notes: "Note: abandoned pickle building", name: "utah pickle co", folder: 'pickle' },
-	{ lat: 40.753135, lng: -111.902191, notes: "Note: Warehouse", name: "Warehouse", folder: 'Warehouse' }
+    //{ lat: 40.753712, lng: -111.900832, notes: "Note: multiple buildings in area", name: "Construction", folder: 'construction' },
+    //{ lat: 41.225611, lng: -111.991836, notes: "Note: abandoned hospital", name: "Hospital", folder: 'hospital' },
+    //{ lat: 40.901375, lng: -111.885932, notes: "Note: Anson Call house", name: "Call House", folder: 'house' }, 	
+	//{ lat: 40.752839, lng: -111.902072, notes: "Note: abandoned pickle building", name: "utah pickle co", folder: 'pickle' },
+	//{ lat: 40.753135, lng: -111.902191, notes: "Note: Warehouse", name: "Warehouse", folder: 'Warehouse' }
 ];
 
 // Add markers to the map

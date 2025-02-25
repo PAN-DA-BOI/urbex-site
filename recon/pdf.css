@@ -88,6 +88,8 @@ p {
     background: linear-gradient(to right, #32a852, #dc3545);
 }
 .pdf {
-	width: 90%;
+	width: 95%;
 	aspect-ratio: 4 / 3;
+	#width: 800;
+	height: 100%;
 }
