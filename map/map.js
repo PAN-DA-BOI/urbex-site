@@ -19,6 +19,32 @@ var files = [
     { path: 'food-world/image (9).jpg', folder: 'food-world' },
     { path: 'food-world/image (10).jpg', folder: 'food-world' },
     { path: 'food-world/image (11).jpg', folder: 'food-world' },
+	{ path: 'training/train.html', folder: 'training' },
+	{ path: 'training/image (1).JPEG', folder: 'training' },
+	{ path: 'training/image (2).JPEG', folder: 'training' },
+	{ path: 'training/image (3).JPEG', folder: 'training' },
+	{ path: 'training/image (4).JPEG', folder: 'training' },
+	{ path: 'training/image (5).JPEG', folder: 'training' },
+	{ path: 'training/image (6).JPEG', folder: 'training' },
+	{ path: 'training/image (7).JPEG', folder: 'training' },
+	{ path: 'training/image (8).JPEG', folder: 'training' },
+	{ path: 'training/image (9).JPEG', folder: 'training' },
+	{ path: 'training/image (10).JPEG', folder: 'training' },
+	{ path: 'training/image (11).JPEG', folder: 'training' },
+	{ path: 'training/image (12).JPEG', folder: 'training' },
+	{ path: 'training/image (13).JPEG', folder: 'training' },
+	{ path: 'training/image (14).JPEG', folder: 'training' },
+	{ path: 'training/image (15).JPEG', folder: 'training' },
+	{ path: 'training/image (16).JPEG', folder: 'training' },
+	{ path: 'training/video (1).mp4', folder: 'training' },
+	{ path: 'training/video (2).mp4', folder: 'training' },
+	{ path: 'training/video (3).mp4', folder: 'training' },
+	{ path: 'training/video (4).mp4', folder: 'training' },
+	{ path: 'training/video (5).mp4', folder: 'training' },
+	{ path: 'training/video (6).mp4', folder: 'training' },
+	{ path: 'training/video (7).mp4', folder: 'training' },
+	{ path: 'training/video (8).mp4', folder: 'training' },
+
     // Add other files here
 ];
 
@@ -40,6 +66,7 @@ var locations = [
     //{ lat: 40.901375, lng: -111.885932, notes: "Note: Anson Call house", name: "Call House", folder: 'house' }, 	
 	//{ lat: 40.752839, lng: -111.902072, notes: "Note: abandoned pickle building", name: "utah pickle co", folder: 'pickle' },
 	//{ lat: 40.753135, lng: -111.902191, notes: "Note: Warehouse", name: "Warehouse", folder: 'Warehouse' }
+	{ lat: 40.8741744, lng: -111.918811, notes: "Note: police training house", name: "Training House", folder: 'training' }
 ];
 
 // Add markers to the map
