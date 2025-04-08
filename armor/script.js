@@ -33,10 +33,10 @@ function showCustomizeOptions() {
 
     const options = ['Bat', 'Porcupine', 'Owl', 'Eel'];
     const images = [
-        'path/to/bat.png',
-        'path/to/porcupine.png',
-        'path/to/owl.png',
-        'path/to/eel.png'
+        'bat.png',
+        'porcupine.png',
+        'owl.png',
+        'eel.png'
     ];
 
     options.forEach((option, index) => {
